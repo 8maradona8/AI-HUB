@@ -1,185 +1,161 @@
-# vibecode-full-stack-starter-kit - Full-Stack Development Environment
+# 🚀 AI Tools Platform - Full-Stack Starter Kit
 
-Generated on: Thu Sep  4 01:37:12 PM EEST 2025
-Location: /home/softart/scripts/vibecode-full-stack-starter-kit
-
-## 🚀 Tech Stack
-
-- **Frontend**: Next.js + React + TypeScript (Port 8200)
-- **Backend**: Laravel + PHP 8.2 + Nginx (Port 8201)  
-- **Database**: MySQL 8.0 (Port 8203)
-- **Cache**: Redis 7 (Port 8204)
-- **Development Tools**: Alpine container (Port 8205)
-
-## 📋 Quick Start
-
-1. **Start the environment:**
-   ```bash
-   ./start.sh
-   ```
-
-2. **Access your applications:**
-   - Frontend: http://localhost:8200
-   - Backend: http://localhost:8201
-   - API Status: http://localhost:8201/api/status
-
-3. **Stop the environment:**
-   ```bash
-   ./stop.sh
-   ```
-
-## 🔧 Management Scripts
-
-- `./start.sh` - Start all services with auto-setup
-- `./stop.sh` - Stop all services
-- `./laravel-setup.sh` - Full Laravel initialization
-- `./db-manage.sh` - Database management utilities
-
-## 📁 Project Structure
-
-```
-vibecode-full-stack-starter-kit/
-├── frontend/             # Next.js application
-│   ├── src/             # Source code
-│   ├── public/          # Static assets
-│   ├── package.json     # Frontend dependencies
-│   └── next.config.js   # Next.js configuration
-├── backend/             # Laravel application
-│   ├── app/             # Application code
-│   ├── public/          # Web root
-│   ├── routes/          # API routes
-│   ├── database/        # Migrations, seeders
-│   ├── .env            # Laravel configuration
-│   └── composer.json    # Backend dependencies
-├── nginx/              # Nginx configuration
-├── docker/             # Docker configurations
-├── mysql/init/         # Database initialization
-├── tools/              # Development utilities
-├── docker-compose.yml  # Container orchestration
-└── README.md          # This documentation
-```
-
-## 🐳 Docker Services
-
-All services are isolated with unique names: `vibecode-full-stack-starter-kit_*`
-
-- **frontend** - Next.js development server
-- **backend** - Nginx reverse proxy
-- **php_fpm** - PHP-FPM for Laravel
-- **mysql** - MySQL 8.0 database
-- **redis** - Redis cache server
-- **tools** - Development utilities container
-
-## 💻 Development Commands
-
-### Frontend Development
-```bash
-# Access frontend container
-docker compose exec frontend sh
-
-# Install packages
-docker compose exec frontend npm install package-name
-
-# View frontend logs
-docker compose logs frontend -f
-```
-
-### Backend Development
-```bash
-# Access PHP container
-docker compose exec php_fpm sh
-
-# Laravel Artisan commands
-docker compose exec php_fpm php artisan --version
-docker compose exec php_fpm php artisan migrate
-docker compose exec php_fpm php artisan make:controller UserController
-docker compose exec php_fpm php artisan make:model Product -m
-
-# Composer commands
-docker compose exec php_fpm composer install
-docker compose exec php_fpm composer require laravel/sanctum
-
-# View backend logs
-docker compose logs backend -f
-docker compose logs php_fpm -f
-```
-
-### Database Operations
-```bash
-# Connect to MySQL
-./db-manage.sh connect
-
-# Create backup
-./db-manage.sh backup
-
-# Connect to Redis
-./db-manage.sh redis
-
-# Direct MySQL access
-docker compose exec mysql mysql -u root -pvibecode-full-stack-starter-kit_mysql_pass vibecode-full-stack-starter-kit_app
-```
-
-## 🔐 Database Configuration
-
-**MySQL Credentials:**
-- Host: mysql (internal) / localhost:8203 (external)
-- Database: vibecode-full-stack-starter-kit_app
-- Username: root
-- Password: vibecode-full-stack-starter-kit_mysql_pass
-
-**Redis Configuration:**
-- Host: redis (internal) / localhost:8204 (external)  
-- Password: vibecode-full-stack-starter-kit_redis_pass
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-1. **Port conflicts:**
-   - Check if ports 8200-8205 are available
-   - Use `netstat -tulpn | grep :PORT` to check port usage
-
-2. **Permission issues:**
-   - Run `./laravel-setup.sh` to fix Laravel permissions
-
-3. **Services not starting:**
-   - Check Docker is running: `docker ps`
-   - View logs: `docker compose logs`
-
-### Useful Commands
-
-```bash
-# Check service status
-docker compose ps
-
-# View all logs
-docker compose logs -f
-
-# Restart specific service
-docker compose restart frontend
-docker compose restart backend
-
-# Rebuild services
-docker compose up -d --build
-
-# Clean up (removes containers and volumes)
-docker compose down -v
-```
-
-## 📊 Monitoring
-
-- **Service Status**: `docker compose ps`
-- **Resource Usage**: `docker stats`
-- **Logs**: `docker compose logs -f [service_name]`
-
-## 🔄 Updates
-
-To update the environment:
-1. Pull latest images: `docker compose pull`
-2. Rebuild services: `docker compose up -d --build`
+Това е модерен full-stack проект, изграден с **Next.js** (Frontend) и **Laravel** (Backend). Проектът включва разширени функционалности като система за любими инструменти, усъвършенствано търсене (Command Palette), тъмен/светъл режим и защитен административен панел.
 
 ---
 
-**Generated with create-fullstack-env.sh**  
-**Project ID**: vibecode-full-stack-starter-kit  
-**Created**: Thu Sep  4 01:37:12 PM EEST 2025
+## 🛠️ Технологичен стек
+
+- **Frontend**: Next.js (React) + Tailwind CSS
+- **Backend**: Laravel (PHP 8.2) + MySQL + Redis
+- **Infrastructure**: Docker & Docker Compose
+- **Security**: 2FA (OTP, Telegram), Role-Based Access Control (RBAC)
+
+---
+
+## 📦 Инструкции за инсталация (Локално)
+
+Ако искате да стартирате проекта без Docker, следвайте тези стъпки:
+
+### 1. Backend (Laravel)
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve --port=8201
+```
+
+### 2. Frontend (Next.js)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Отворете [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🐳 Как да стартираш с Docker
+
+Проектът е напълно контейнеризиран за лесна настройка.
+
+1.  **Стартиране на средата:**
+    ```bash
+    ./start.sh
+    ```
+    Този скрипт автоматично ще стартира всички услуги (frontend, backend, db, redis) и ще извърши първоначалната настройка.
+
+2.  **Достъп до приложенията:**
+    - **Frontend**: [http://localhost:8200](http://localhost:8200)
+    - **Backend (API)**: [http://localhost:8201](http://localhost:8201)
+    - **API Статус**: [http://localhost:8201/api/status](http://localhost:8201/api/status)
+
+3.  **Спиране на средата:**
+    ```bash
+    ./stop.sh
+    ```
+
+---
+
+## ➕ Как се добавят тулове
+
+Добавянето на нови инструменти става през интуитивния интерфейс на административния панел:
+
+1.  **Вход**: Влезте в профила си (демо администратор: `admin@example.com` / `password`).
+2.  **Навигация**: Отидете на страницата **Admin** от страничното меню.
+3.  **Добавяне**: Кликнете върху бутона **"Add New Tool"**.
+4.  **Детайли**: Попълнете име на инструмента, описание, URL адрес и изберете съответните категории и роли.
+5.  **Запазване**: Инструментът ще се появи веднага в списъка и ще бъде достъпен за потребителите според техните роли.
+
+---
+
+## 🔐 Ролева система и права
+
+Системата използва **Role-Based Access Control (RBAC)**, за да управлява достъпа:
+
+### 1. Администратор (Admin)
+- Пълен достъп до платформата.
+- Може да добавя, редактира и изтрива инструменти.
+- Управлява категории и роли.
+- Достъп до административната статистика.
+
+### 2. Потребител (Member)
+- Може да разглежда инструментите, които са предназначени за неговата роля.
+- Може да добавя инструменти в **"Любими"** (Favorites).
+- Може да използва **Command Palette** (Cmd+K) за търсене.
+
+### 3. Гост (Guest)
+- Достъп само до началната страница.
+- Трябва да се регистрира, за да получи достъп до инструментите.
+
+---
+
+---
+
+## 🤖 Интеграция на AI Агенти
+
+Тази платформа е разработена с мисъл за "Agent-First" разработка. Тя предоставя структуриран API и чиста архитектура, която позволява на AI агенти да:
+- Автоматизират управлението на инструменти.
+- Извършват мониторинг на активността чрез Audit лога.
+- Интегрират нови услуги чрез модулния Service layer в backend-а.
+
+---
+
+## 📝 Начални промтове за разработка
+
+Ако стартирате нов Агент за разработка (като Antigravity или друг AI асистент), използвайте тези промтове, за да го въведете бързо в контекста:
+
+### Промт за общ контекст:
+> "Аз съм разработчик и искам да продължим работата по AI Hub платформата. Проектът е базиран на Laravel 11 (Backend) и Next.js 14 (Frontend). Използваме Tailwind за стилизиране и Docker за среда. Започни с преглед на `README.md` и анализирай последните промени в `backend/app/Services/ToolService.php` и `frontend/src/services/api.js`."
+
+### Промт за добавяне на нова функционалност:
+> "Искам да добавя нова функционалност [ИМЕ]. Анализирай съществуващата `AdminPage` и `useTools` куката. Предложи план за реализация, който включва нова миграция, актуализация на `ToolService` и съответния UI компонент, следвайки вече установения стил на Dark Mode."
+
+### Промт за дебъгване:
+> "Имам проблем с [ОПИСАНИЕ]. Провери лога на контейнера `php_fpm` и локалната SQLite/MySQL база данни. Провери дали `AuditObserver` записва правилно събитието и дали `ActivityLog` моделът се актуализира."
+
+---
+
+---
+
+## 🚀 Деплой в GitHub и CI/CD
+
+За да качите проекта в GitHub и да настроите автоматизация, следвайте тези стъпки:
+
+### 1. Създаване на Репозиторий
+1. Отидете в [GitHub](https://github.com/new) и създайте нов **Private** или **Public** репозиторий.
+2. Инициализирайте локалното хранилище (ако не е направено):
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit: AI Hub Platform"
+   ```
+3. Свържете локалния проект с GitHub:
+   ```bash
+   git remote add origin https://github.com/ПОТРЕБИТЕЛ/ИМЕ-НА-ПРОЕКТА.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+### 2. GitHub Actions (CI/CD)
+Проектът поддържа автоматизирани тестове. Можете да създадете `.github/workflows/tests.yml`, за да стартирате PHPUnit и Frontend тестовете при всяко изпращане на код.
+
+### 3. Хостинг препоръки
+Тъй като проектът е Full-Stack, се препоръчва:
+- **Frontend (Next.js)**: [Vercel](https://vercel.com) (най-бърза интеграция с GitHub).
+- **Backend (Laravel)**: [Railway.app](https://railway.app), [DigitalOcean App Platform](https://www.digitalocean.com/products/app-platform) или **Laravel Forge**.
+- **База данни**: Managed MySQL/PostgreSQL или Docker контейнер в Railway/DigitalOcean.
+
+---
+
+## 🧹 Полезни скриптове
+
+- `./db-manage.sh backup` - Създава архив на базата данни.
+- `./laravel-setup.sh` - Поправя правата и преинсталира зависимостите на Laravel.
+- `docker compose logs -f` - Преглед на логовете в реално време.
+
+---
+
+**Проектът е разработен с фокус върху производителността и сигурността.** 🚀

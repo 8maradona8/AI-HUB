@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Laravel\Sanctum\HasApiTokens;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +23,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
+        'two_factor_enabled',
+        'two_factor_method',
+        'two_factor_secret',
+        'telegram_chat_id',
+        'two_factor_code',
+        'two_factor_code_expires_at',
     ];
 
     /**
@@ -43,6 +52,28 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_code_expires_at' => 'datetime',
+            'two_factor_enabled' => 'boolean',
         ];
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function tools()
+    {
+        return $this->hasMany(Tool::class);
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Tool::class, 'favorite_tool')->withTimestamps();
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
