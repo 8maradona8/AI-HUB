@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { apiFetch } from '@/utils/api';
 import Sidebar from '@/components/Sidebar';
 import { useToast } from '@/context/ToastContext';
+import { useAdmin } from '@/hooks/useAdmin';
 
 export default function AdminPage() {
     const router = useRouter();
