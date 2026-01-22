@@ -40,19 +40,19 @@ jobs:
     - name: Run Migrations
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: /home/runner/work/full-stack-starter-kit/full-stack-starter-kit/backend/database/database.sqlite
+        DB_DATABASE: database/database.sqlite
       run: cd backend && php artisan migrate --force
 
     - name: Run Seeders
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: /home/runner/work/full-stack-starter-kit/full-stack-starter-kit/backend/database/database.sqlite
+        DB_DATABASE: database/database.sqlite
       run: cd backend && php artisan db:seed --force
 
     - name: Execute tests
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: /home/runner/work/full-stack-starter-kit/full-stack-starter-kit/backend/database/database.sqlite
+        DB_DATABASE: database/database.sqlite
       run: cd backend && php artisan test
 
   nextjs-tests:
@@ -77,3 +77,6 @@ jobs:
 
     - name: Run build (Verify compilation)
       run: cd frontend && npm run build
+
+    - name: Run linting
+      run: cd frontend && npm run lint
