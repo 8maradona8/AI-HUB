@@ -55,7 +55,7 @@ export default function Home() {
           </h1>
 
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Discover, share, and organize the best AI tools curated specifically for your team's needs.
+            Discover, share, and organize the best AI tools curated specifically for your team&apos;s needs.
             Get personalized recommendations based on your role.
           </p>
 
@@ -169,7 +169,7 @@ export default function Home() {
               Join the AI Revolution
             </h2>
             <p className="text-white/90 mb-8 max-w-xl mx-auto text-lg">
-              Start exploring the most curated collection of AI tools and supercharge your team's productivity.
+              Start exploring the most curated collection of AI tools and supercharge your team&apos;s productivity.
             </p>
             <Button size="lg" asChild className="bg-white text-slate-900 hover:bg-slate-50 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <Link href="/register">

@@ -101,7 +101,7 @@ export default function CommandPalette({ isOpen, onClose }) {
                     {!isLoading && query && results.length === 0 && (
                         <div className="p-12 text-center text-gray-500">
                             <div className="text-4xl mb-4 opacity-20">🔍</div>
-                            <div className="font-bold text-sm">No results found for "{query}"</div>
+                            <div className="font-bold text-sm">No results found for &quot;{query}&quot;</div>
                         </div>
                     )}
 

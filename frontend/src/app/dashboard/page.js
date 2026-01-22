@@ -77,7 +77,7 @@ export default function Dashboard() {
                                 Welcome back, {user.name}!
                             </h1>
                             <p className="text-gray-600 mt-1">
-                                Here's what's happening with your AI tools.
+                                Here&apos;s what&apos;s happening with your AI tools.
                             </p>
                         </div>
                         <div className="flex items-center gap-4">
