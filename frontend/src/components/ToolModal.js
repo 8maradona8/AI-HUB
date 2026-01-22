@@ -91,24 +91,24 @@ export default function ToolModal({ tool, categories, roles, onClose, refresh })
         >
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label className="block text-sm font-bold text-gray-500 mb-1 uppercase tracking-wider">Tool Name</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Tool Name</label>
                     <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 bg-background border border-card-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                        className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                         required
                     />
                 </div>
 
                 <div>
-                    <label className="block text-sm font-bold text-gray-500 mb-1 uppercase tracking-wider">Description</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Description</label>
                     <textarea
                         name="description"
                         value={formData.description}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 bg-background border border-card-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+                        className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
                         rows="3"
                         required
                     />
@@ -116,24 +116,24 @@ export default function ToolModal({ tool, categories, roles, onClose, refresh })
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm font-bold text-gray-500 mb-1 uppercase tracking-wider">URL</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">URL</label>
                         <input
                             type="url"
                             name="url"
                             value={formData.url}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 bg-background border border-card-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             placeholder="https://..."
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-bold text-gray-500 mb-1 uppercase tracking-wider">Image URL (Optional)</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Image URL (Optional)</label>
                         <input
                             type="url"
                             name="image_url"
                             value={formData.image_url}
                             onChange={handleChange}
-                            className="w-full px-4 py-2 bg-background border border-card-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             placeholder="https://..."
                         />
                     </div>
@@ -141,17 +141,17 @@ export default function ToolModal({ tool, categories, roles, onClose, refresh })
 
                 {/* Categories */}
                 <div>
-                    <label className="block text-sm font-bold text-gray-500 mb-2 uppercase tracking-wider">Categories</label>
-                    <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-3 border border-card-border rounded-xl bg-background/50">
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Categories</label>
+                    <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-3 border border-gray-300 rounded-md bg-gray-50">
                         {categories.map(cat => (
-                            <label key={cat.id} className="inline-flex items-center space-x-2 bg-card border border-card-border px-3 py-1.5 rounded-lg cursor-pointer hover:bg-background transition-colors">
+                            <label key={cat.id} className="inline-flex items-center space-x-2 bg-white border border-gray-300 px-3 py-1.5 rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
                                 <input
                                     type="checkbox"
                                     checked={formData.categories.includes(cat.id)}
                                     onChange={() => toggleSelection('categories', cat.id)}
-                                    className="form-checkbox text-blue-500 rounded bg-background border-card-border focus:ring-0 focus:ring-offset-0"
+                                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                 />
-                                <span className="text-sm font-medium text-foreground/80">{cat.name}</span>
+                                <span className="text-sm text-gray-700">{cat.name}</span>
                             </label>
                         ))}
                     </div>
@@ -159,34 +159,34 @@ export default function ToolModal({ tool, categories, roles, onClose, refresh })
 
                 {/* Target Roles */}
                 <div>
-                    <label className="block text-sm font-bold text-gray-500 mb-2 uppercase tracking-wider">Target Roles</label>
-                    <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-3 border border-card-border rounded-xl bg-background/50">
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Target Roles</label>
+                    <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-3 border border-gray-300 rounded-md bg-gray-50">
                         {roles.map(role => (
-                            <label key={role.id} className="inline-flex items-center space-x-2 bg-card border border-card-border px-3 py-1.5 rounded-lg cursor-pointer hover:bg-background transition-colors">
+                            <label key={role.id} className="inline-flex items-center space-x-2 bg-white border border-gray-300 px-3 py-1.5 rounded-md cursor-pointer hover:bg-gray-50 transition-colors">
                                 <input
                                     type="checkbox"
                                     checked={formData.roles.includes(role.id)}
                                     onChange={() => toggleSelection('roles', role.id)}
-                                    className="form-checkbox text-purple-500 rounded bg-background border-card-border focus:ring-0 focus:ring-offset-0"
+                                    className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
                                 />
-                                <span className="text-sm font-medium text-foreground/80">{role.name}</span>
+                                <span className="text-sm text-gray-700">{role.name}</span>
                             </label>
                         ))}
                     </div>
                 </div>
 
-                <div className="flex justify-end pt-4 space-x-3 border-t border-card-border mt-2">
+                <div className="flex justify-end pt-4 space-x-3 border-t border-gray-200 mt-4">
                     <button
                         type="button"
                         onClick={onClose}
-                        className="px-4 py-2 bg-background border border-card-border hover:bg-card text-foreground rounded-lg transition-all font-bold uppercase tracking-wider text-xs"
+                        className="px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-md transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isSubmitting}
                     >
                         Cancel
                     </button>
                     <button
                         type="submit"
-                        className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg font-bold shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-xs"
+                        className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? 'Saving...' : (tool ? 'Update Tool' : 'Add Tool')}

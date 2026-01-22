@@ -4,6 +4,8 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8201/api';
 
 export async function apiFetch(endpoint, options = {}) {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8201/api';
+    const fullUrl = `${API_URL}${endpoint}`;
 
     const headers = {
         'Content-Type': 'application/json',
@@ -12,7 +14,7 @@ export async function apiFetch(endpoint, options = {}) {
         ...options.headers,
     };
 
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(fullUrl, {
         ...options,
         headers,
     });

@@ -14,29 +14,29 @@ export default function Navbar({ user, onLogout }) {
             case 'Owner':
                 return (
                     <>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Admin Panel</a>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">User Management</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">Admin Panel</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">User Management</a>
                     </>
                 );
             case 'Backend':
                 return (
                     <>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">API Docs</a>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Server Status</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">API Docs</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">Server Status</a>
                     </>
                 );
             case 'Frontend':
                 return (
                     <>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Design System</a>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Components</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">Design System</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">Components</a>
                     </>
                 );
             case 'QA':
                 return (
                     <>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Bug Tracker</a>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Test Reports</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">Bug Tracker</a>
+                        <a href="#" className="block px-4 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-gray-700">Test Reports</a>
                     </>
                 );
             default:
@@ -56,10 +56,10 @@ export default function Navbar({ user, onLogout }) {
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <Link href="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900">
+                                <Link href="/dashboard" className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-gray-900">
                                     Dashboard
                                 </Link>
-                                <Link href="/profile" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">
+                                <Link href="/profile" className="px-4 py-2 rounded-lg text-sm font-semibold text-gray-300 hover:text-white hover:bg-gray-700">
                                     Profile
                                 </Link>
                                 {user?.role?.name && (
@@ -81,7 +81,7 @@ export default function Navbar({ user, onLogout }) {
                             </div>
                             <button
                                 onClick={onLogout}
-                                className="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-3 py-1 rounded-md text-sm font-medium border border-red-500/50 transition-colors"
+                                className="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-4 py-2 rounded-lg text-sm font-semibold border border-red-500/50 transition-all active:scale-95"
                             >
                                 Log Out
                             </button>
@@ -114,10 +114,10 @@ export default function Navbar({ user, onLogout }) {
             {isOpen && (
                 <div className="md:hidden" id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <Link href="/dashboard" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">
+                        <Link href="/dashboard" className="bg-gray-900 text-white block px-4 py-2 rounded-lg text-base font-semibold">
                             Dashboard
                         </Link>
-                        <Link href="/profile" className="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">
+                        <Link href="/profile" className="text-gray-300 hover:text-white hover:bg-gray-700 block px-4 py-2 rounded-lg text-base font-semibold">
                             Profile
                         </Link>
                         {getRoleMenuItems()}
@@ -132,7 +132,7 @@ export default function Navbar({ user, onLogout }) {
                         <div className="mt-3 px-2 space-y-1">
                             <button
                                 onClick={onLogout}
-                                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                                className="block w-full text-left px-4 py-2 rounded-lg text-base font-semibold text-gray-400 hover:text-white hover:bg-gray-700"
                             >
                                 Log Out
                             </button>

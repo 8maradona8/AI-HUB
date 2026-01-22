@@ -33,7 +33,7 @@ const StarRating = ({ rating, maxStars = 5, onRatingChange, size = 'sm', readonl
                 </button>
             ))}
             {!readonly && rating > 0 && (
-                <span className="ml-2 text-sm font-bold text-foreground opacity-60">
+                <span className="ml-2 text-sm font-medium text-gray-600">
                     {rating} / {maxStars}
                 </span>
             )}

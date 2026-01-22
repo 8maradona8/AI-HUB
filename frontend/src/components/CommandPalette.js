@@ -67,25 +67,25 @@ export default function CommandPalette({ isOpen, onClose }) {
     return (
         <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh] px-4 pointer-events-none">
             <div
-                className="fixed inset-0 bg-background/60 backdrop-blur-md pointer-events-auto"
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm pointer-events-auto"
                 onClick={onClose}
             />
 
-            <div className="w-full max-w-xl bg-card rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-card-border overflow-hidden pointer-events-auto flex flex-col transition-colors duration-300">
-                <div className="p-6 border-b border-card-border flex items-center space-x-4 bg-background/50">
+            <div className="w-full max-w-xl bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden pointer-events-auto flex flex-col transition-colors duration-300">
+                <div className="p-4 border-b border-gray-200 flex items-center space-x-3 bg-gray-50">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                     <input
                         ref={inputRef}
                         type="text"
-                        className="w-full bg-transparent border-none text-foreground focus:ring-0 text-xl font-medium placeholder:text-gray-500"
+                        className="w-full bg-transparent border-none text-gray-900 focus:ring-0 text-base font-medium placeholder:text-gray-400"
                         placeholder="Search tools, roles, categories..."
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         onKeyDown={handleKeyDown}
                     />
-                    <div className="flex items-center space-x-1 bg-background border border-card-border px-2 py-1 rounded-lg text-[10px] text-gray-500 font-bold uppercase tracking-wider shadow-sm">
+                    <div className="flex items-center space-x-1 bg-white border border-gray-300 px-2 py-1 rounded-md text-xs text-gray-500 font-medium uppercase tracking-wider">
                         <span>ESC</span>
                     </div>
                 </div>
@@ -109,15 +109,15 @@ export default function CommandPalette({ isOpen, onClose }) {
                         <button
                             key={tool.id}
                             onClick={() => handleSelect(tool)}
-                            className={`w-full text-left p-4 rounded-2xl flex items-center justify-between transition-all group ${index === selectedIndex ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/20 scale-[1.02]' : 'hover:bg-background text-foreground hover:scale-[1.01]'
+                            className={`w-full text-left p-3 rounded-md flex items-center justify-between transition-all group ${index === selectedIndex ? 'bg-blue-600 text-white' : 'hover:bg-gray-50 text-gray-900'
                                 }`}
                         >
                             <div className="flex items-center space-x-4">
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-black border transition-colors ${index === selectedIndex ? 'bg-white/20 border-white/20 text-white' : 'bg-background border-card-border text-blue-500'}`}>
+                                <div className={`w-10 h-10 rounded-md flex items-center justify-center text-base font-semibold border transition-colors ${index === selectedIndex ? 'bg-white/20 border-white/20 text-white' : 'bg-gray-100 border-gray-300 text-blue-600'}`}>
                                     {tool.name.charAt(0).toUpperCase()}
                                 </div>
                                 <div className="min-w-0">
-                                    <div className={`font-bold text-lg leading-tight truncate ${index === selectedIndex ? 'text-white' : 'text-foreground'}`}>
+                                    <div className={`font-semibold text-sm leading-tight truncate ${index === selectedIndex ? 'text-white' : 'text-gray-900'}`}>
                                         {tool.name}
                                     </div>
                                     <div className={`text-sm truncate max-w-xs font-medium ${index === selectedIndex ? 'text-blue-100' : 'text-gray-500'}`}>
@@ -149,20 +149,20 @@ export default function CommandPalette({ isOpen, onClose }) {
                                     </svg>
                                 </div>
                             </div>
-                            <div className="text-foreground font-bold text-lg mb-1">Search Anything</div>
+                            <div className="text-gray-900 font-semibold text-base mb-1">Search Anything</div>
                             <div className="text-gray-500 font-medium text-sm">Type a name, description or role to discover tools.</div>
                         </div>
                     )}
                 </div>
 
-                <div className="p-4 bg-background/80 border-t border-card-border flex justify-between items-center text-[10px] text-gray-500 uppercase tracking-widest font-black">
-                    <div className="flex space-x-6">
+                <div className="p-3 bg-gray-50 border-t border-gray-200 flex justify-between items-center text-xs text-gray-500 uppercase tracking-wider font-medium">
+                    <div className="flex space-x-4">
                         <div className="flex items-center gap-1.5">
-                            <span className="bg-card px-1.5 py-0.5 rounded border border-card-border shadow-sm">⏎</span>
+                            <span className="bg-white px-1.5 py-0.5 rounded border border-gray-300">⏎</span>
                             <span>select</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <span className="bg-card px-1.5 py-0.5 rounded border border-card-border shadow-sm">↑↓</span>
+                            <span className="bg-white px-1.5 py-0.5 rounded border border-gray-300">↑↓</span>
                             <span>navigate</span>
                         </div>
                     </div>

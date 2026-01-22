@@ -13,6 +13,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/roles', [\App\Http\Controllers\API\RoleController::class, 'index']); // Public for registration
 Route::get('/tools/{tool}/reviews', [ReviewController::class, 'index']);
+Route::get('/status', function () {
+    return response()->json(['status' => 'API is working', 'timestamp' => now()]);
+});
 
 // 2FA login verification (before full auth)
 Route::post('/2fa/send-login-otp', [TwoFactorController::class, 'sendLoginOtp']);
