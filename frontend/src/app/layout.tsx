@@ -25,9 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${interSans.variable} ${jetBrainsMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <ToastProvider>
