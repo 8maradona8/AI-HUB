@@ -42,6 +42,7 @@ export default function AddToolPage() {
 
         // Fetch categories and roles
         fetchCategoriesAndRoles();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mounted, router]);
 
     const fetchCategoriesAndRoles = async () => {
@@ -173,7 +174,7 @@ export default function AddToolPage() {
                                 required
                             />
                             <p className="text-sm text-gray-500 mt-1">
-                                Provide a clear and concise description of the tool's purpose and features.
+                                Provide a clear and concise description of the tool&apos;s purpose and features.
                             </p>
                         </div>
 
