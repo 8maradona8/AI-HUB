@@ -17,7 +17,7 @@ export default function Dashboard() {
         reviews: 0
     });
 
-    const { tools, categories, loading, filterType, setFilterType } = useTools();
+    const { tools, loading, filterType, setFilterType } = useTools();
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -207,8 +207,8 @@ export default function Dashboard() {
                             <button
                                 onClick={() => setFilterType('all')}
                                 className={`px-3 py-1 rounded-md text-sm font-medium ${filterType === 'all'
-                                        ? 'bg-blue-100 text-blue-700'
-                                        : 'text-gray-600 hover:text-gray-900'
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : 'text-gray-600 hover:text-gray-900'
                                     }`}
                             >
                                 All Tools
@@ -216,8 +216,8 @@ export default function Dashboard() {
                             <button
                                 onClick={() => setFilterType('recommended')}
                                 className={`px-3 py-1 rounded-md text-sm font-medium ${filterType === 'recommended'
-                                        ? 'bg-blue-100 text-blue-700'
-                                        : 'text-gray-600 hover:text-gray-900'
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : 'text-gray-600 hover:text-gray-900'
                                     }`}
                             >
                                 Recommended
@@ -257,11 +257,11 @@ export default function Dashboard() {
                                     tool={tool}
                                     user={user}
                                     onEdit={(tool) => router.push(`/tools/${tool.id}/edit`)}
-                                    onDelete={(toolId) => {
+                                    onDelete={(_toolId) => {
                                         // Handle delete
                                         addToast('Delete functionality coming soon', 'info');
                                     }}
-                                    onToggleFavorite={(toolId) => {
+                                    onToggleFavorite={(_toolId) => {
                                         // Handle favorite toggle
                                         addToast('Favorite functionality coming soon', 'info');
                                     }}
